@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="apple.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-primary">
+        <div class="container ">
+            <div class="col col-lg-3">
+                <a class="navbar-brand  text-white" href="#">Invoice Generator</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="row col-lg-9 justify-content-between">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-light">
+                        <li class="nav-item mx-2">
+                            <a class="nav-link active  text-white" aria-current="page" href="#">Help</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link  text-white" href="#">Invoice Guide</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link  text-white" href="#">Sign In</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <button type="button" class="btn btn-success rounded-pill  text-white"
+                                style="height: 40px;">Sign Up</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="container p-2 border border-primary-subtle bg-light-subtle">
+        <div class="row d-flex justify-content-between">
+            <div class="col col-lg-5">
+                <div class="col mb-2 mt-2">
+                    <input style="width: 200px; height: 90px;" class="form-control" placeholder="+ ADD YOUR LOGO">
+                </div>
+
+                <div>
+                    <input type=" text" class="form-control" placeholder="Who is the invoice from?(required)"
+                        aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+            </div>
+
+            <div class="col col-lg-5">
+                <div class="col">
+                    <h1 class="display-4">INVOICE</h1>
+                </div>
+
+                <div class="col">
+                    <div class="input-group" style="width: 250px; height: 50px;">
+                        <span class="input-group-text" id="basic-addon1">#</span>
+                        <input type="text" class="form-control" placeholder="1" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col d-flex align-items-center">
+                <div class="col me-1" style="width: 30%; height: 50px;">
+                    <label for="exampleFormControldetInp" class="form-label">Bill To</label>
+                    <input type=" text" class="form-control" placeholder="(required)" id="exampleFormControldetInp">
+                </div>
+
+                <div class="col mx-1" style="width: 30%; height: 50px;">
+                    <label for="exampleFormControldetInp" class="form-label">Ship To</label>
+                    <input type="text" class="form-control" placeholder="(optional)" id="exampleFormControldetInp"
+                        placeholder="name@example.com">
+                </div>
+            </div>
+
+            <div class="col col-lg-5">
+                <div>
+                    <div class="input-group mb-1">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Date</span>
+                        <input type="date" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                </div>
+                <div>
+                    <div class="input-group mb-1">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Payment Terms</span>
+                        <input type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                </div>
+                <div>
+                    <div class="input-group mb-1">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Due Date</span>
+                        <input type="date" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                </div>
+                <div>
+                    <div class="input-group mb-1">
+                        <span class="input-group-text" id="inputGroup-sizing-default">PO Number</span>
+                        <input type="text" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table id="tab" class="table bg-dark rounded-1 my-1 text-white text-center">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Rate</th>
+                    <th scope="col">Amount</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td><input onInput='item(event)' type="text" class="form-control text-center"
+                            placeholder='description of products' aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm"></td>
+                    <td><input onInput='qty(event)' type="text" class="form-control text-center" placeholder='0'
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td><input onInput='rate(event)' type="text" class="form-control text-center" placeholder='0'
+                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td><input id="amt" onInput='amount(event)' type="text" class="form-control text-center"
+                            placeholder='$0.00' aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div>
+            <button type="button" class="btn btn-success rounded-1 text-white mt-0" onclick="lineItem()"> +Line
+                Item</button>
+        </div>
+
+        <div class="row mt-3 justify-content-between align-items-end">
+            <div class="col col-lg-5 ">
+                <div>
+                    <Form.Label>Notes</Form.Label>
+                    <input type=" text" class="form-control" placeholder="(required)" id="exampleFormControldetInp">
+                </div>
+
+                <div>
+                    <label for="exampleFormControldetInp" class="form-label">Terms</label>
+                    <input type="text" class="form-control" placeholder="(optional)" id="exampleFormControldetInp"
+                        placeholder="name@example.com">
+                </div>
+            </div>
+
+
+            <div class="col col-lg-5 ">
+                <div class="row">
+                    <div class="col my-1 mx-0 pe-0">
+                        <input type=" text" class="form-control" value="SUBTOTAL" id="exampleFormControldetInp">
+                    </div>
+
+                    <div class="col my-1 mx-0 ps-0">
+                        <input id="subTee" type=" text" class="form-control" id="exampleFormControldetInp">
+                    </div>
+                </div>
+
+                <div>
+                    <button type="button" class="btn btn-outline-success border-0 my-1 px-3" onClick="discountBtn()">+
+                        Discount</button><span id="inpDis"></span>
+                    <button type="button" class="btn btn-outline-success border-0 my-1 px-3" onClick="taxBtn()">+
+                        Tax</button><span id="inpTax"></span>
+                    <button type="button" class="btn btn-outline-success border-0 my-1 px-3" onClick="shipBtn()">+
+                        Shipping</button><span id="inpShip"></span>
+                </div>
+
+
+                <div class="row">
+                    <div class="col my-1 mx-0 pe-0">
+                        <input type=" text" class="form-control" value="TOTAL" id="exampleFormControldetInp">
+                    </div>
+
+                    <div class="col my-1 mx-0 ps-0">
+                        <input id="toTee" type=" text" class="form-control" id="exampleFormControldetInp">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col my-1 mx-0 pe-0">
+                        <input type=" text" class="form-control" value="AMOUNT DUE" placeholder="(required)"
+                            id="exampleFormControldetInp">
+                    </div>
+
+                    <div class="col my-1 mx-0 ps-0">
+                        <input type=" text" class="form-control" id="exampleFormControldetInp">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col my-1 mx-0 pe-0">
+                        <input type=" text" class="form-control" value="BALANCE DUE" placeholder="(required)"
+                            id="exampleFormControldetInp">
+                    </div>
+                    <div class="col my-1 mx-0 ps-0">
+                        <input id="balDue" type=" text" class="form-control" id="exampleFormControldetInp">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        let data = [];
+        let any = [];
+        let sum = '';
+        let total = '';
+        let inpDis = document.getElementById("inpDis");
+        let inpTax = document.getElementById("inpTax");
+        let inpShip = document.getElementById("inpShip");
+        let toInp = document.getElementById("toTee")
+        let balInp = document.getElementById("balDue")
+
+        const lineItem = () => {
+            total = data.reduce((acc, each) => acc + each.sum, 0)
+
+            for (let i = 0; i <= any.length; i++) {
+                let tab = document.getElementById("tab");
+                let row = tab.insertRow();
+                var indexCell = row.insertCell();
+                var cell1 = row.insertCell();
+                var cell2 = row.insertCell();
+                var cell3 = row.insertCell();
+                var cell4 = row.insertCell();
+
+                let inp1 = ''
+                let inp2 = ''
+                let inp3 = ''
+
+
+                var indexText = document.createTextNode(i++);
+                var detInp = document.createElement("input");
+                var qtyInp = document.createElement("input");
+                var rateInp = document.createElement("input");
+                var costInp = document.createElement("input");
+
+                detInp.addEventListener("input", (event, i) => { inp1 = event.target.value })
+                detInp.style.width = '100%';
+                detInp.style.borderRadius = '0.375rem';
+                detInp.style.fontWeight = "400";
+                detInp.style.height = "40px";
+                detInp.style.padding = '6px 12px';
+                detInp.style.textAlign = 'center';
+                detInp.setAttribute('placeholder', 'description of products');
+
+                qtyInp.addEventListener("input", (event, i) => {
+                    inp2 = event.target.value
+                })
+                qtyInp.style.width = '100%';
+                qtyInp.style.borderRadius = '0.375rem';
+                qtyInp.style.height = "40px";
+                qtyInp.setAttribute('placeholder', '0');
+                qtyInp.style.padding = '6px 12px';
+                qtyInp.style.textAlign = 'center';
+
+
+                rateInp.addEventListener("input", (event, i) => {
+                    costInp.value = event.target.value * inp2
+                    sum = parseInt(costInp.value)
+                    data.push({ sum })
+                    total = data.reduce((acc, each) => acc + each.sum, 0)
+                    subTee.value = total
+                    toInp.value = total
+                    balInp.value = total
+                })
+                rateInp.style.width = '100%';
+                rateInp.style.borderRadius = '0.375rem';
+                rateInp.style.height = "40px";
+                rateInp.setAttribute('placeholder', '0');
+                rateInp.style.padding = '6px 12px';
+                rateInp.style.textAlign = 'center';
+
+
+                costInp.addEventListener("input", (event, i) => { })
+                costInp.style.width = '100%';
+                costInp.style.borderRadius = '0.375rem';
+                costInp.style.height = "40px";
+                costInp.setAttribute('placeholder', '$0.00');
+                costInp.style.padding = '6px 12px';
+                costInp.style.textAlign = 'center';
+
+                indexCell.appendChild(indexText);
+                cell1.appendChild(detInp)
+                cell2.appendChild(qtyInp)
+                cell3.appendChild(rateInp)
+                cell4.appendChild(costInp)
+            }
+        }
+
+        const discountBtn = () => {
+            inpDis.innerHTML = "<input style='border-radius: 0.375rem; height: 25px;' onInput = 'inpforDis(event.target.value)' /> <button style='border-radius: 0.375rem; height: 25px;' onClick='btnX1()'>x</button>"
+        }
+        const inpforDis = e => {
+            total = data.reduce((acc, each) => acc + each.sum, 0)
+            if (e > 0) { toInp.value = (total) - (parseInt(e) / 100) * (total) }
+            if (e > 0) { balInp.value = (total) - (parseInt(e) / 100) * (total) }
+            else (toInp.value = total)
+        }
+        const btnX1 = () => {
+            inpDis.innerHTML = ""
+        }
+
+        const taxBtn = () => {
+            inpTax.innerHTML = "<input style='border-radius: 0.375rem; height: 25px;' onInput='inpforTax(event.target.value)'/><button style='border-radius: 0.375rem; height: 25px;' onClick='btnX2()'>x</button>"
+        }
+        const inpforTax = e => {
+            if (event.target.value > 0) { toInp.value = total + parseInt(event.target.value) / 100 * total }
+            if (event.target.value > 0) { balInp.value = total + parseInt(event.target.value) / 100 * total }
+            else (toInp.value = total)
+        }
+        const btnX2 = () => {
+            inpTax.innerHTML = ""
+        }
+
+        const shipBtn = () => {
+            inpShip.innerHTML = "<input style='border-radius: 0.375rem; height: 25px;' onInput='inpforShip(event.target.value)'/><button style='border-radius: 0.375rem; height: 25px;' onClick='btnX3()'>x</button>"
+        }
+        const inpforShip = e => {
+            if (e > 0) { toInp.value = total + parseInt(e) }
+            if (e > 0) { balInp.value = total + parseInt(e) }
+            else (toInp.value = total)
+        }
+        const btnX3 = () => {
+            inpShip.innerHTML = ""
+
+        }
+
+        let inp1 = '';
+        let inp2 = '';
+
+        const item = e => {
+        }
+        const qty = e => {
+            inp1 = e.target.value
+        }
+        const rate = e => {
+            inp2 = e.target.value
+            amt.value = inp1 * inp2
+            sum = parseInt(amt.value)
+            data.push({ sum })
+            subTee.value = total + parseInt(amt.value)
+            toInp.value = total + parseInt(amt.value)
+            balInp.value = total + parseInt(amt.value)
+        }
+
+    </script>
+</body>
+
+</html>
