@@ -114,11 +114,11 @@ const LandingPage = ({ data, handleLining }) => {
                 const pageId = downloadPage.current
 
                 const opt = {
-                    margin: [0, 0, 0, 0], // Set margins to 0 for full-page PDF
-                    filename: 'invoice.pdf', // Specify the name of the downloaded PDF file
-                    image: { type: 'jpeg', quality: 0.98 }, // Image settings
-                    html2canvas: { scale: 5 }, // html2canvas settings
-                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } // jsPDF settings
+                    margin: [0, 0, 0, 0],
+                    filename: 'invoice.pdf',
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 5 },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
                 };
 
                 html2pdf().set(opt).from(pageId).save();
