@@ -10,12 +10,9 @@ import Nav from 'react-bootstrap/Nav';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
-import html2pdf from 'html2pdf.js'
 
 
-const LandingPage = ({ data, handleLining }) => {
-    let downloadPage = useRef()
-
+const LandingPage = ({ data, handleLining, hanldeInvoiceDownload }) => {
     let [logo, setLogo] = useState('')
     let [reciever, setReciever] = useState('')
     let [billTo, setBillTo] = useState('')
@@ -111,17 +108,8 @@ const LandingPage = ({ data, handleLining }) => {
                 }
                 break;
             case any === 'download':
-                const pageId = downloadPage.current
+                hanldeInvoiceDownload({ logo, reciever, billTo, shipTo, poNumber, terms, invoiceNum, date, dueDate, amountPaid, condTerms, subTotal, note, total, disc, tax, ship, balance })
 
-                const opt = {
-                    margin: [0, 0, 0, 0],
-                    filename: 'invoice.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 5 },
-                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-                };
-
-                html2pdf().set(opt).from(pageId).save();
 
                 break;
         }
@@ -140,7 +128,7 @@ const LandingPage = ({ data, handleLining }) => {
 
             <Container >
                 <Row className='d-flex justify-content-around'>
-                    <Col lg={10} md={10} sm={12} xs={12} className='border my-3 py-1 border-5 bg-light p-2' ref={downloadPage}>
+                    <Col lg={10} md={10} sm={12} xs={12} className='border my-3 py-1 border-5 bg-light p-2' >
 
                         <Row className='d-flex justify-content-between align-items-center'>
                             <h1 className='text-end m-1 d-block d-sm-block d-md-none d-lg-none'>INVOICE</h1>
